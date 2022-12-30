@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.User;
+import dao.UserDao;
+import form.UserForm;
+
 /**
  * Servlet implementation class AuthenticationServlet
  */
@@ -29,19 +33,26 @@ public class AuthenticationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String login = request.getParameter("login");
-		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
 		
-		if ("".equals(login) || "".equals(password))
+		UserForm form = new UserForm(request);
+		
+		request.setAttribute("status", form.Status());
+		request.setAttribute("statusMessage", form.getStatusMessage());
+		
+		if (form.login()) 
 		{
-			request.setAttribute("message", "Informations incorrectes");
-			response.sendRedirect("connexion");
+			session.setAttribute("isConnected", true);
+			session.setAttribute("user", form.getUser());
+			response.sendRedirect("accueil");
 		}
 		else
 		{
-			User user = UserDao.getUser(login, password);
+			request.setAttribute("user", form.getUser());
+			request.setAttribute("errors", form.getErrors());
+			this.doGet(request, response);
 		}
+		
 	}
 
 }

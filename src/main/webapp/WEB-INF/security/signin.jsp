@@ -1,32 +1,38 @@
 <%@ include file="../common/header.jsp" %>
+
 <section class="h-screen">
   <div class="container px-6 py-12 h-full">
     <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
       <div class="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
         <img
-          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+          src="<%=request.getContextPath()%>/../public/images/login.svg"
           class="w-full"
           alt="Phone image"
         />
       </div>
       <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
-        <form>
+        <form method="post">
+        <h4 class="text-red-600 text-center font-bold mb-4">${statusMessage}</h4>
           <!-- Email input -->
           <div class="mb-6">
             <input
               type="text"
+              name="login"
               class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               placeholder="Login ou N de telephone"
             />
+			 <span class="error">${ errors.login}</span>
           </div>
 
           <!-- Password input -->
           <div class="mb-6">
             <input
               type="password"
+              name="password"
               class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               placeholder="Mot de passe"
             />
+			 <span class="error">${ errors.password}</span>
           </div>
 
           <div class="flex justify-between items-center mb-6">
