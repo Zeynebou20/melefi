@@ -3,24 +3,24 @@ package bean;
 public class User {
 	
 	private int id;
-	private String lastname, firstname, login, password;
+	private String lastname, firstname, email, password;
 
 	public User()
 	{
 		
 	}
 	
-	public User(String lastname, String firstname, String login, String password)
+	public User(String lastname, String firstname, String email, String password)
 	{
 		this.setLastname(lastname);
 		this.setFirstname(firstname);
-		this.setLogin(login);
+		this.setEmail(email);
 		this.setPassword(password);
 	}
 
-	public User(int id, String lastname, String firstname, String login, String password)
+	public User(int id, String lastname, String firstname, String email, String password)
 	{
-		this(lastname, firstname, login, password);
+		this(lastname, firstname, email, password);
 		this.setId(id);
 	}
 	
@@ -48,12 +48,12 @@ public class User {
 		this.firstname = firstname;
 	}
 
-	public String getLogin() {
-		return login;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {

@@ -13,8 +13,8 @@ public class UserDao
 {
 	private static ArrayList<User> users = new ArrayList<User>();
 	
-	private static final String CREATE_QUERY = "INSERT INTO user(lastname, firstname, login, password) VALUES (?, ?, ?, ?);";
-    private static final String UPDATE_QUERY = "UPDATE user SET lastname=?, firstname=?, login=?, password=? WHERE id = ?;";
+	private static final String CREATE_QUERY = "INSERT INTO user(lastname, firstname, email, password) VALUES (?, ?, ?, ?);";
+    private static final String UPDATE_QUERY = "UPDATE user SET lastname=?, firstname=?, email=?, password=? WHERE id = ?;";
     private static final String DELETE_QUERY = "DELETE FROM user WHERE id = ?;";
     private static final String FINDALL_QUERY = "select * from user";
 	
@@ -27,7 +27,7 @@ public class UserDao
 				stm = conn.createStatement();
 				ResultSet res = stm.executeQuery(FINDALL_QUERY);
 				while(res.next()) {
-					User user = new User(res.getInt("id"), res.getString("lastname"), res.getString("firstname"), res.getString("login"), res.getString("password"));
+					User user = new User(res.getInt("id"), res.getString("lastname"), res.getString("firstname"), res.getString("email"), res.getString("password"));
 					users.add(user);
 				}
 			} catch (SQLException e) {
@@ -54,11 +54,11 @@ public class UserDao
 		return null;
 	}
 	
-	public static User getUser(String login, String password)
+	public static User getUser(String email, String password)
 	{
 		for(User user : users)
 		{
-			if (user.getLogin().equals(login) && user.getPassword().equals(password))
+			if (user.getEmail().equals(email) && user.getPassword().equals(password))
 				return user;
 		}
 		
@@ -72,7 +72,7 @@ public class UserDao
 			PreparedStatement ps = conn.prepareStatement(CREATE_QUERY, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, user.getLastname());
 			ps.setString(2, user.getFirstname());
-			ps.setString(3, user.getLogin());
+			ps.setString(3, user.getEmail());
 			ps.setString(4, user.getPassword());
 			if(ps.executeUpdate()!=0) {
 				ResultSet keys = ps.getGeneratedKeys();
@@ -99,7 +99,7 @@ public class UserDao
 			{
 				user.setLastname(editing_user.getLastname());
 				user.setFirstname(editing_user.getFirstname());
-				user.setLogin(editing_user.getLogin());
+				user.setEmail(editing_user.getEmail());
 				user.setPassword(editing_user.getPassword());
 				// update on the DB
 				Connection conn = DbConnection.open();
@@ -107,7 +107,7 @@ public class UserDao
 					PreparedStatement ps = conn.prepareStatement(UPDATE_QUERY);
 					ps.setString(1, editing_user.getLastname());
 					ps.setString(2, editing_user.getFirstname());
-					ps.setString(3, editing_user.getLogin());
+					ps.setString(3, editing_user.getEmail());
 					ps.setString(4, editing_user.getPassword());
 					ps.setInt(5, editing_user.getId());
 					if(ps.executeUpdate()!=0) {

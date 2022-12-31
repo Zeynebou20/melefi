@@ -1,116 +1,91 @@
 <%@ include file="../common/header.jsp" %>
-
-<section class="h-screen">
-  <div class="container px-6 py-12 h-full">
+<section class="h-full gradient-form bg-gray-200 md:h-screen">
+  <div class="container py-12 px-6 h-full">
     <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
-      <div class="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
-        <img
-          src="<%=request.getContextPath()%>/../public/images/login.svg"
-          class="w-full"
-          alt="Phone image"
-        />
-      </div>
-      <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
-        <form method="post">
-        <h4 class="text-red-600 text-center font-bold mb-4">${statusMessage}</h4>
-          <!-- Email input -->
-          <div class="mb-6">
-            <input
-              type="text"
-              name="login"
-              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="Login ou N de telephone"
-            />
-			 <span class="error">${ errors.login}</span>
-          </div>
-
-          <!-- Password input -->
-          <div class="mb-6">
-            <input
-              type="password"
-              name="password"
-              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="Mot de passe"
-            />
-			 <span class="error">${ errors.password}</span>
-          </div>
-
-          <div class="flex justify-between items-center mb-6">
-            <div class="form-group form-check">
-              <input
-                type="checkbox"
-                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                id="exampleCheck3"
-                checked
-              />
-              <label class="form-check-label inline-block text-gray-800" for="exampleCheck2"
-                >Se rappeler de moi</label
-              >
+      <div class="xl:w-10/12">
+        <div class="block bg-white shadow-lg rounded-lg">
+          <div class="lg:flex lg:flex-wrap g-0">
+            <div
+              class="lg:w-6/12 flex items-center lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none"
+              style="
+                background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+              "
+            >
+              <img
+		          src="https://img.freepik.com/vecteurs-libre/illustration-concept-medecins_114360-1515.jpg?w=1380&t=st=1672504408~exp=1672505008~hmac=1d80e42c3e340220785ace211b856bc1735b26b3455998411d29048e819a2d0b"
+		          class="w-full h-full"
+		          alt="Signin image"
+		        />
             </div>
-            <a
-              href="#!"
-              class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
-              >Mot de passe oublie</a
-            >
+            <div class="lg:w-6/12 px-4 md:px-0">
+              <div class="md:p-12 md:mx-6">
+                <div class="text-center">
+               
+                  <h1 class="text-6xl text-red-600 font-semibold mt-1 mb-6 pb-1">
+                  	Melefi
+                  </h1>
+                </div>
+                <form method="post">
+                  <h2 class="mb-4 text-3xl text-center">Connexion</h2>
+        			<h4 class="text-red-600 text-center font-bold mb-4">${statusMessage}</h4>
+                  <div class="mb-4">
+                    <input
+                      type="text"
+                      name="email"
+                      class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      id="exampleFormControlInput1"
+                      placeholder="Email"
+                    />
+			 		<span class="text-red-600">${ errors.email}</span>
+                  </div>
+                  <div class="mb-4">
+                    <input
+                      type="password"
+                      name="password"
+                      class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      id="exampleFormControlInput1"
+                      placeholder="Password"
+                    />
+			 		<span class="text-red-600">${ errors.password}</span>
+                  </div>
+                  <div class="text-center pt-1 mb-12 pb-1">
+                    <button
+                      class="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
+                      type="submit"
+                      data-mdb-ripple="true"
+                      data-mdb-ripple-color="light"
+                      style="
+                        background: linear-gradient(
+                          to right,
+                          #ee7724,
+                          #d8363a,
+                          #dd3675,
+                          #b44593
+                        );
+                      "
+                    >
+                      Se connecter
+                    </button>
+                    <a class="text-gray-500" href="#!">Mot de passe oublie?</a>
+                  </div>
+                  <div class="flex items-center justify-between pb-6">
+                    <p class="mb-0 mr-2">Vous n'avez pas de compte?</p>
+                    <a
+                    	href="${ pageContext.request.contextPath }/inscription"
+                      type="button"
+                      class="inline-block px-6 py-2 border-2 border-red-600 text-red-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                      data-mdb-ripple="true"
+                      data-mdb-ripple-color="light"
+                    >
+                      Creer-en
+                    </a>
+                  </div>
+                </form>
+              </div>
+            </div>
+       
           </div>
-
-          <!-- Submit button -->
-          <button
-            type="submit"
-            class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
-          >
-            Se connecter
-          </button>
-
-          <div
-            class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"
-          >
-            <p class="text-center font-semibold mx-4 mb-0">OR</p>
-          </div>
-
-          <a
-            class="px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3"
-            style="background-color: #3b5998"
-            href="#!"
-            role="button"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
-          >
-            <!-- Facebook -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 320 512"
-              class="w-3.5 h-3.5 mr-2"
-            >
-              <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-              <path
-                fill="currentColor"
-                d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
-              /></svg>Continue with Facebook
-          </a>
-          <a
-            class="px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center"
-            style="background-color: #55acee"
-            href="#!"
-            role="button"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
-          >
-            <!-- Twitter -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-              class="w-3.5 h-3.5 mr-2"
-            >
-              <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-              <path
-                fill="currentColor"
-                d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
-              /></svg>Continue with Twitter
-          </a>
-        </form>
+        </div>
       </div>
     </div>
   </div>

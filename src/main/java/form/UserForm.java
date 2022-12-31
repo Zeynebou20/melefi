@@ -10,7 +10,7 @@ import dao.UserDao;
 
 public class UserForm 
 {
-	private static final String LOGIN = "login";
+	private static final String EMAIL = "email";
 	private static final String PASSWORD = "password";
 	
 	private static final String ERROR_MESSAGE = "Informations incorrectes";
@@ -33,14 +33,14 @@ public class UserForm
 
 	public boolean login() 
 	{
-		String login = this.getParameter(LOGIN);
+		String email = this.getParameter(EMAIL);
 		String password = this.getParameter(PASSWORD);
 		
-		this.inputsValidation(LOGIN, PASSWORD);
+		this.inputsValidation(EMAIL, PASSWORD);
 
 		if (this.errors.isEmpty()) 
 		{	
-			this.user = UserDao.getUser(login, password);
+			this.user = UserDao.getUser(email, password);
 			if (null != this.user) {
 				this.statusMessage = SUCCESS_MESSAGE;
 				this.status = true;
