@@ -16,7 +16,7 @@ import form.UserForm;
 /**
  * Servlet implementation class AuthenticationServlet
  */
-@WebServlet({"/", "/connexion"})
+@WebServlet({"/connexion", "/deconnexion"})
 public class AuthenticationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String SIGNIN_VIEW = "/WEB-INF/security/signin.jsp";
@@ -25,8 +25,17 @@ public class AuthenticationServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		getServletContext().getRequestDispatcher(SIGNIN_VIEW).forward(request, response);
+		
+		if(request.getServletPath().equals("/connexion")) {
+			getServletContext().getRequestDispatcher(SIGNIN_VIEW).forward(request, response);
+		}
+		else
+		{
+			HttpSession session = request.getSession();
+			session.invalidate();
+			response.sendRedirect("connexion");
+		}
+		
 	}
 
 	/**
