@@ -45,14 +45,25 @@ public class UserForm
 		String email = this.getParameter(EMAIL);
 		String password = this.getParameter(PASSWORD);
 		
+		PBKDF2Hash hash = new PBKDF2Hash();
+		
 		this.inputsValidation(EMAIL, PASSWORD);
 
 		if (this.errors.isEmpty()) 
 		{	
-			this.user = UserDao.getUser(email, password);
-			if (null != this.user) {
-				this.statusMessage = SUCCESS_MESSAGE;
-				this.status = true;
+			this.user = UserDao.getUser(email);
+			
+			try {
+				if (null != this.user && hash.validatePassword(password, this.user.getPassword())) {
+					this.statusMessage = SUCCESS_MESSAGE;
+					this.status = true;
+				}
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidKeySpecException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 

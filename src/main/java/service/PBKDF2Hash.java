@@ -10,7 +10,7 @@ import javax.crypto.spec.PBEKeySpec;
 
 public class PBKDF2Hash{
 	
-	public static String generateStorngPasswordHash(String password)
+	public String generateStorngPasswordHash(String password)
 	    throws NoSuchAlgorithmException, InvalidKeySpecException
 	{
 	    int iterations = 1000;
@@ -23,7 +23,7 @@ public class PBKDF2Hash{
 	}
 	
 
-	public static boolean validatePassword(String originalPassword, String storedPassword) 
+	public boolean validatePassword(String originalPassword, String storedPassword) 
 	    throws NoSuchAlgorithmException, InvalidKeySpecException
 	{
 	    String[] parts = storedPassword.split(":");
@@ -44,7 +44,7 @@ public class PBKDF2Hash{
 	    return diff == 0;
 	}
 	
-	private static byte[] fromHex(String hex) throws NoSuchAlgorithmException
+	private byte[] fromHex(String hex) throws NoSuchAlgorithmException
 	{
 	    byte[] bytes = new byte[hex.length() / 2];
 	    for(int i = 0; i < bytes.length ;i++)
@@ -53,14 +53,14 @@ public class PBKDF2Hash{
 	    }
 	    return bytes;
 	}
-	private static byte[] getSalt() throws NoSuchAlgorithmException
+	private byte[] getSalt() throws NoSuchAlgorithmException
 	{
 	    SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
 	    byte[] salt = new byte[16];
 	    sr.nextBytes(salt);
 	    return salt;
 	}
-	private static String toHex(byte[] array) throws NoSuchAlgorithmException
+	private String toHex(byte[] array) throws NoSuchAlgorithmException
 	{
 	    BigInteger bi = new BigInteger(1, array);
 	    String hex = bi.toString(16);

@@ -54,11 +54,11 @@ public class UserDao
 		return null;
 	}
 	
-	public static User getUser(String email, String password)
+	public static User getUser(String email)
 	{
 		for(User user : users)
 		{
-			if (user.getEmail().equals(email) && user.getPassword().equals(password))
+			if (user.getEmail().equals(email))
 				return user;
 		}
 		
